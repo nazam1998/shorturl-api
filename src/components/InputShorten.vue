@@ -26,7 +26,6 @@ export default {
   data() {
     return {
       text: null,
-      msg: "",
       regex: /^(http|https):\/\/[w\d]+\.[\w](\/[\w\d]+)?$/,
     };
   },
@@ -36,9 +35,17 @@ export default {
       if (this.text) {
         this.$store.dispatch("shortenLink", this.text);
         this.text = "";
+      } else {
+        this.$store.commit("setMsg", "Not a valid URL");
       }
     },
   },
+  computed:{
+    msg: function(){
+      console.log(this.$store.getters.msg);
+      return this.$store.getters.msg
+    }
+  }
 };
 </script>
 <style scoped>
