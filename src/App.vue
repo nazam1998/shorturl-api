@@ -47,7 +47,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.section-grey {
-  height: 140vh;
-}
 </style>

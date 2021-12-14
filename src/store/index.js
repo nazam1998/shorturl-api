@@ -14,6 +14,12 @@ export default new Vuex.Store({
         original: linkTab[0],
         shorted: linkTab[1]
       })
+    },
+    remove: function (state, index) {
+      state.listLink.splice(index, 1);
+    },
+    clearAll: function (state) {
+      state.listLink = [];
     }
   },
   getters: {

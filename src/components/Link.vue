@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container @mouseenter="isHover = true" @mouseleave="isHover = false">
     <b-card>
       <b-row class="justify-content-around">
         <b-col cols="6" class="text-left"
@@ -7,15 +7,19 @@
             link.original
           }}</a></b-col
         >
-        <b-col cols="4"
+        <b-col cols="4" class="text-right"
           ><a :href="link.shorted" class="text-info mr-5">{{ link.shorted }}</a>
-
           <b-btn
             v-clipboard:copy="link.shorted"
             v-clipboard:success="onCopy"
             v-clipboard:error="onError"
             :class="{ 'btn-info': !isClicked, 'btn-danger': isClicked }"
             >{{ copied }}</b-btn
+          >
+        </b-col>
+        <b-col cols="2">
+          <b-btn v-if="isHover" @click="$store.commit('remove', index)"
+            >&cross;</b-btn
           >
         </b-col>
       </b-row>
@@ -28,10 +32,12 @@ export default {
   data() {
     return {
       isClicked: false,
+      isHover: false,
     };
   },
   props: {
     link: Object,
+    index: Number,
   },
   methods: {
     onCopy() {

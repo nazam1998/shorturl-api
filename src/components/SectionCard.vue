@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <b-container class="w-100" :style="`height: ${cardList.length*250}px;`">
     <b-row class="section-card-line">
       <b-col v-for="(card, index) in cardList" :key="index" cols="4">
         <card :card="card" :index="index"/>

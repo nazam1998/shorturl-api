@@ -5,7 +5,9 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+    name: "BoosterSection",
+};
 </script>
 <style scoped>
 .booster-section {
